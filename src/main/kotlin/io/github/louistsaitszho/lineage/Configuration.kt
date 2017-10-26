@@ -13,5 +13,10 @@ class Configuration {
     /**
      *
      */
-    val VIDEO_TAB_NAME = "videos"
+    val VIDEO_TAB_NAME = "Videos"
+
+    val SCHOOL_TAB_NAME = "Schools"
+
+    val MODULES_TAB_NAME = "Modules"
+
 }

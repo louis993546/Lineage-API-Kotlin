@@ -16,13 +16,14 @@ class VideoController {
 
     @GetMapping("/rest/v1/videos")
     fun getVideos(@RequestHeader(value = "access_token") accessToken: String): Response<VideoAttributes> {
+        //todo use sql to write query to extra videos that is visible to the school which that token belongs to
         return Response(
                 listOf(
-                        Data("1", "1", VideoAttributes("1", "1", "1")),
-                        Data("1", "1", VideoAttributes("1", "1", "1")),
-                        Data("1", "1", VideoAttributes("1", "1", "1")),
-                        Data("1", "1", VideoAttributes("1", "1", "1")),
-                        Data("1", "1", VideoAttributes("1", "1", "1"))
+                        Data("1", "video", VideoAttributes("1", "1", "1")),
+                        Data("1", "video", VideoAttributes("1", "1", "1")),
+                        Data("1", "video", VideoAttributes("1", "1", "1")),
+                        Data("1", "video", VideoAttributes("1", "1", "1")),
+                        Data("1", "video", VideoAttributes("1", "1", "1"))
                 ),
                 null
         )
@@ -32,11 +33,11 @@ class VideoController {
     fun getModules(@RequestHeader(value = "access_token") accessToken: String): Response<ModuleAttributes> {
         return Response(
                 listOf(
-                        Data("1", "1", ModuleAttributes("1")),
-                        Data("1", "1", ModuleAttributes("1")),
-                        Data("1", "1", ModuleAttributes("1")),
-                        Data("1", "1", ModuleAttributes("1")),
-                        Data("1", "1", ModuleAttributes("1"))
+                        Data("1", "module", ModuleAttributes("1")),
+                        Data("1", "module", ModuleAttributes("1")),
+                        Data("1", "module", ModuleAttributes("1")),
+                        Data("1", "module", ModuleAttributes("1")),
+                        Data("1", "module", ModuleAttributes("1"))
                 ),
                 null
         )
