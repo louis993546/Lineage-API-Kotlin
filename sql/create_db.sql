@@ -13,3 +13,5 @@ CREATE TABLE schools_modules (id text, school_id text, module_id text);
 ALTER TABLE schools_modules ADD PRIMARY KEY ("id");
 ALTER TABLE schools_modules ADD CONSTRAINT fk_school_id FOREIGN KEY (school_id) REFERENCES schools(id);
 ALTER TABLE schools_modules ADD CONSTRAINT fk_module_id FOREIGN KEY (module_id) REFERENCES modules(id);
+
+ALTER TABLE "public"."schools" ADD UNIQUE ("access_code");
