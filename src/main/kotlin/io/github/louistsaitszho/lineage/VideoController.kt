@@ -14,6 +14,7 @@ class VideoController {
 //        return Greeting(counter.incrementAndGet(), "Hello, $name")
 //    }
 
+    //todo ask for module id in param
     @GetMapping("/rest/v1/videos")
     fun getVideos(@RequestHeader(value = "access_token") accessToken: String): Response<VideoAttributes> {
         //todo use sql to write query to extra videos that is visible to the school which that token belongs to

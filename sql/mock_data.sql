@@ -12,3 +12,5 @@ INSERT INTO "public"."videos"("id", "title", "url", "host_on", "module_id") VALU
 INSERT INTO "public"."videos"("id", "title", "url", "host_on", "module_id") VALUES('3', 'c', '345', 'gdrive', '3');
 INSERT INTO "public"."videos"("id", "title", "url", "host_on", "module_id") VALUES('4', 'd', '456', 'dropbox', '2');
 INSERT INTO "public"."videos"("id", "title", "url", "host_on", "module_id") VALUES('5', 'e', '567', 'gdrive', '2');
+
+INSERT INTO "public"."schools_modules"("id", "school_id", "module_id") VALUES('1', '1', '1') RETURNING "id", "school_id", "module_id";
