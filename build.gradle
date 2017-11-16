@@ -3,6 +3,7 @@ buildscript {
     ext.spring_boot_version = '1.5.4.RELEASE'
     repositories {
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" // Required for Kotlin integration
@@ -29,4 +30,5 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile 'org.postgresql:postgresql:42.1.4'
+//    compile 'com.github.louistsaitszho:Lineage-DTO:2.0'
 }
