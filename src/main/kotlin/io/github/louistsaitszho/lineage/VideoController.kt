@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class VideoController {
     private final val connection = Database.getConnection()
-    val psGetVideosByTokenAndModule = connection?.prepareStatement("SELECT v.id AS id, 'video' AS type, u.title AS title, u.url AS url, u.host_on AS host FROM videos AS v, schools AS s, schools_modules AS sm,( SELECT v.id, v.title, v.url, v.host_on, v.module_id FROM videos AS v, schools AS s, schools_modules AS sm WHERE s.access_code = ? AND s.id = sm.school_id AND v.module_id = sm.module_id AND v.module_id = ?) u WHERE s.access_code = ? AND s.id = sm.school_id AND v.module_id = sm.module_id AND v.module_id = ? AND v.id = u.id;")
+    val psGetVideosByTokenAndModule = connection?.prepareStatement("SELECT v.id AS id, 'video' AS type, u.title AS title, u.url AS url, u.host_on AS host, v.module_id AS module_id FROM videos AS v, schools AS s, schools_modules AS sm,( SELECT v.id, v.title, v.url, v.host_on, v.module_id FROM videos AS v, schools AS s, schools_modules AS sm WHERE s.access_code = ? AND s.id = sm.school_id AND v.module_id = sm.module_id AND v.module_id = ?) u WHERE s.access_code = ? AND s.id = sm.school_id AND v.module_id = sm.module_id AND v.module_id = ? AND v.id = u.id;")
     val psGetModulesByToken = connection?.prepareStatement("SELECT m.id AS id, 'module' AS type, attr.name AS name FROM schools AS s, schools_modules AS sm, modules AS m,( SELECT m.id, m.name FROM schools AS s, schools_modules AS sm, modules AS m WHERE s.access_code = ? AND s.id = sm.school_id AND m.id = sm.module_id) attr WHERE s.access_code = ? AND s.id = sm.school_id AND m.id = sm.module_id and m.id = attr.id;")
     val psGetSchoolByToken = connection?.prepareStatement("SELECT s.id AS id, 'school' AS type, s.name AS name FROM schools AS s WHERE s.access_code = ?;")
 
@@ -41,7 +41,8 @@ class VideoController {
             val title = rs.getString("title")
             val link = rs.getString("url")
             val host = rs.getString("host")
-            dataList.add(Data(id, type, VideoAttributes(title, link, host)))
+            val moduleId = rs.getString("module_id")
+            dataList.add(Data(id, type, VideoAttributes(title, link, host, moduleId)))
         }
         return Response(dataList, null)
     }
